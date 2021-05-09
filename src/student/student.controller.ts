@@ -1,14 +1,15 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Patch, Post } from '@nestjs/common';
+
+import { StudentDto } from './student.dto';
+import { StudentModel } from './student.model';
 import { StudentService } from './student.service';
-import { CreateStudentDto } from './dto/create-student.dto';
-import { UpdateStudentDto } from './dto/update-student.dto';
 
 @Controller('student')
 export class StudentController {
   constructor(private readonly studentService: StudentService) {}
 
   @Post()
-  create(@Body() createStudentDto: CreateStudentDto) {
+  create(@Body() createStudentDto: StudentDto) {
     return this.studentService.create(createStudentDto);
   }
 
@@ -23,7 +24,7 @@ export class StudentController {
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateStudentDto: UpdateStudentDto) {
+  update(@Param('id') id: string, @Body() updateStudentDto: StudentDto) {
     return this.studentService.update(+id, updateStudentDto);
   }
 

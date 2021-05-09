@@ -1,10 +1,10 @@
 import { Injectable } from '@nestjs/common';
-import { CreateSimulationDto } from './dto/create-simulation.dto';
-import { UpdateSimulationDto } from './dto/update-simulation.dto';
+
+import { SimulationDto } from './simulation.dto';
 
 @Injectable()
 export class SimulationService {
-  create(createSimulationDto: CreateSimulationDto) {
+  create(createSimulationDto: SimulationDto) {
     return 'This action adds a new simulation';
   }
 
@@ -16,7 +16,7 @@ export class SimulationService {
     return `This action returns a #${id} simulation`;
   }
 
-  update(id: number, updateSimulationDto: UpdateSimulationDto) {
+  update(id: number, updateSimulationDto: SimulationDto) {
     return `This action updates a #${id} simulation`;
   }
 

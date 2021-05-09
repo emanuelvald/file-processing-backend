@@ -1,6 +1,8 @@
 import { Module } from '@nestjs/common';
 import { SequelizeModule } from '@nestjs/sequelize';
 
+import { StudentModel } from '../student/student.model';
+
 @Module({
   imports: [
     SequelizeModule.forRoot({
@@ -10,7 +12,7 @@ import { SequelizeModule } from '@nestjs/sequelize';
       username: 'root',
       password: 'root',
       database: 'file_processing',
-      models: [],
+      models: [StudentModel],
       autoLoadModels: true,
     }),
   ],

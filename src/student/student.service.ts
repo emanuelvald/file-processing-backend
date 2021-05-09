@@ -1,10 +1,21 @@
+import { response } from 'express';
+import { Sequelize } from 'sequelize-typescript';
+
 import { Injectable } from '@nestjs/common';
-import { CreateStudentDto } from './dto/create-student.dto';
-import { UpdateStudentDto } from './dto/update-student.dto';
+import { InjectModel } from '@nestjs/sequelize';
+
+import { StudentDto } from './student.dto';
+import { StudentModel } from './student.model';
 
 @Injectable()
 export class StudentService {
-  create(createStudentDto: CreateStudentDto) {
+  constructor(
+    private sequelize: Sequelize,
+    @InjectModel(StudentModel)
+    private studentModel: typeof StudentModel,
+  ) {}
+
+  create(createStudentDto: StudentDto) {
     return 'This action adds a new student';
   }
 
@@ -16,7 +27,7 @@ export class StudentService {
     return `This action returns a #${id} student`;
   }
 
-  update(id: number, updateStudentDto: UpdateStudentDto) {
+  update(id: number, updateStudentDto: StudentDto) {
     return `This action updates a #${id} student`;
   }
 

@@ -1,14 +1,14 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Patch, Post } from '@nestjs/common';
+
+import { SimulationDto } from './simulation.dto';
 import { SimulationService } from './simulation.service';
-import { CreateSimulationDto } from './dto/create-simulation.dto';
-import { UpdateSimulationDto } from './dto/update-simulation.dto';
 
 @Controller('simulation')
 export class SimulationController {
   constructor(private readonly simulationService: SimulationService) {}
 
   @Post()
-  create(@Body() createSimulationDto: CreateSimulationDto) {
+  create(@Body() createSimulationDto: SimulationDto) {
     return this.simulationService.create(createSimulationDto);
   }
 
@@ -23,7 +23,7 @@ export class SimulationController {
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateSimulationDto: UpdateSimulationDto) {
+  update(@Param('id') id: string, @Body() updateSimulationDto: SimulationDto) {
     return this.simulationService.update(+id, updateSimulationDto);
   }
 
